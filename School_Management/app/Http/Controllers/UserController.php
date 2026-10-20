@@ -12,22 +12,29 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-     public function storeUser(StoreUserRequest $request){
-        $user=User::query()->create($request->validated());
+        public function storeUser(StoreUserRequest $request)
+    {
+        $user = User::create($request->validated());
+
         return response()->json($user, 201);
     }
 
 
-    public function indexStudents(){
-        $students=Student::query()->with('user')->get();
-        return response()->json($students);
+    // 1. Get all students
+    public function indexStudents()
+    {
+        $students = Student::with('user')->get();
+
+        return response()->json($students, 200);
     }
 
-    public function indexTeachers(){
-        $teachers=Teacher::query()->with('user')->get();
-        return response()->json($teachers);
+
+    // 2. Get all teachers
+    public function indexTeachers()
+    {
+        $teachers = Teacher::with('user')->get();
+
+        return response()->json($teachers, 200);
     }
-
-
-
 }
+

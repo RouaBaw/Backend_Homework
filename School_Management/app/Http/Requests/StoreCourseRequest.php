@@ -22,20 +22,17 @@ class StoreCourseRequest extends FormRequest
      */
     public function rules(): array
 {
-    return [
-        'courses' => ['required', 'array'],
+     return [
+            'courses' => [
+                'required',
+                'array'
+            ],
 
-        'courses.*.name' => [
-            'required',
-            'string',
-            'max:255',
-        ],
-
-        'courses.*.price' => [
-            'required',
-            'numeric',
-            'min:0',
-        ],
-    ];
+            'courses.*.name' => [
+                'required',
+                'string',
+                'max:255'
+            ],
+        ];
 }
 }

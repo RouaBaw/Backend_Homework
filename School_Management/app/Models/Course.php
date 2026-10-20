@@ -11,12 +11,16 @@ class Course extends Model
         'price',
     ];
 
-    public function teacher(){
+      public function teacher()
+    {
         return $this->belongsTo(Teacher::class);
     }
 
-
-    public function students(){
-        return $this->belongsToMany(Student::class, 'course_student');
+    public function students()
+    {
+        return $this->belongsToMany(
+            Student::class,
+            'course_student'
+        );
     }
 }
